@@ -23,7 +23,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       duration: const Duration(seconds: 2),
     );
 
-    _scaleAnimation = Tween<double>(begin: 0.5, end: 0.86).animate(
+    _scaleAnimation = Tween<double>(begin: 0.5, end: 0.96).animate(
       CurvedAnimation(
         parent: _animationController,
         curve: Curves.slowMiddle,
