@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as g;
 import 'package:notiqo/core/utils/app_images.dart';
+import 'package:notiqo/featuers/main/presentation/views/main_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -42,10 +43,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(milliseconds: 3500),
       () {
-        // g.Get.off(() => const HomeView(),
-        //     transition: g.Transition.fade,
-        //     duration: const Duration(milliseconds: 1400));
-        print('Done');
+        g.Get.off(() => const MainView(),
+            transition: g.Transition.fade,
+            duration: const Duration(milliseconds: 1400));
       },
     );
   }
