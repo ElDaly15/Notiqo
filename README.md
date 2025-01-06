@@ -1,5 +1,5 @@
 ## Notiqo App  
-**Duration**: 01/2025 – 03/2025  
+**Duration**: 01/2025 – 01/2025  
 **Technologies**: Flutter, MVVM Architecture, Bloc Pattern, Local Storage  
 
 ### Introduction  
