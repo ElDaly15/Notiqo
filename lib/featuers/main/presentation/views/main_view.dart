@@ -10,6 +10,18 @@ class MainView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.mainColorTheme,
       body: MainViewBody(),
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        backgroundColor: AppColors.mainColorOfText,
+        onPressed: () {},
+        child: const Icon(
+          Icons.add,
+          color: AppColors.mainColorTheme,
+        ),
+      ),
     );
   }
 }
