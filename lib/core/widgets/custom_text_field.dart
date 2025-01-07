@@ -36,7 +36,8 @@ class CustomTextField extends StatelessWidget {
           disabledBorder: InputBorder.none,
         ),
         maxLines: MaxLines,
-        style: TextStyles.font24SemiBold(context).copyWith(color: Colors.white),
+        style: TextStyles.font24Regular(context)
+            .copyWith(color: Colors.white, fontSize: fontSize),
         cursorColor: Colors.white,
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:notiqo/core/utils/app_styles.dart';
 import 'package:notiqo/core/widgets/custom_app_bar_container.dart';
+import 'package:get/get.dart' as g;
+import 'package:notiqo/featuers/edit_note/presentation/views/edit_note_view.dart';
 
 class CustomNotePreviewAppBar extends StatelessWidget {
   const CustomNotePreviewAppBar({super.key});
@@ -60,7 +62,11 @@ class CustomNotePreviewAppBar extends StatelessWidget {
           width: 8,
         ),
         CustomAppBarContainer(
-          onTap: () {},
+          onTap: () {
+            g.Get.to(() => const EditNoteView(),
+                transition: g.Transition.fade,
+                duration: const Duration(milliseconds: 400));
+          },
           iconData: Icons.edit,
         ),
       ],
