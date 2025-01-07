@@ -7,10 +7,12 @@ class CustomTextField extends StatelessWidget {
       {super.key,
       required this.title,
       required this.fontSize,
-      required this.MaxLines});
+      required this.MaxLines,
+      required this.textEditingController});
   final String title;
   final double fontSize;
   final int? MaxLines;
+  final TextEditingController textEditingController;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class CustomTextField extends StatelessWidget {
           selectionHandleColor: Colors.white // Handle color
           ),
       child: TextField(
+        controller: textEditingController,
         decoration: InputDecoration(
           hintText: title,
           hintStyle: TextStyles.font24Medium(context).copyWith(

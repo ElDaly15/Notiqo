@@ -10,10 +10,10 @@ class CustomColorCircleAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor: isActive ? AppColors.mainColorOfText : Colors.red,
+      backgroundColor: isActive ? AppColors.mainColorOfText : color,
       radius: 42,
       child: CircleAvatar(
-        backgroundColor: Colors.red,
+        backgroundColor: color,
         radius: 40,
       ),
     );

@@ -32,6 +32,7 @@ class AddNoteViewBody extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: CustomTextField(
+              textEditingController: TextEditingController(),
               title: 'Title',
               fontSize: 32,
               MaxLines: 1,
@@ -47,6 +48,7 @@ class AddNoteViewBody extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: CustomTextField(
+              textEditingController: TextEditingController(),
               title: 'Type something ...',
               fontSize: 20,
               MaxLines: null,

@@ -12,14 +12,32 @@ class CustomListViewOfCirlceAvatarOfColors extends StatefulWidget {
 class _CustomListViewOfCirlceAvatarOfColorsState
     extends State<CustomListViewOfCirlceAvatarOfColors> {
   int currentIndex = 0;
-
+  final List<Color> colors = [
+    Color(0xffCACF85),
+    Color(0xff8CBA80),
+    Color(0xff658E9C),
+    Color(0xff4D5382),
+    Color(0xff514663),
+    Color(0xffE1B07E),
+    Color(0xffE5BE9E),
+    Color(0xff361D2E),
+    Color(0xff660000),
+    Color(0xffFF9000),
+    Color(0xff2E86AB),
+    Color(0xffF24236),
+    Color(0xff564138),
+    Color(0xff82816D),
+    Color(0xff1B2D2A),
+    Color(0xffB6FFA1),
+    Color(0xff00FF9C),
+  ];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 85,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 10,
+          itemCount: colors.length,
           itemBuilder: (context, index) {
             return index == 0
                 ? Padding(
@@ -31,12 +49,12 @@ class _CustomListViewOfCirlceAvatarOfColorsState
                         });
                       },
                       child: CustomColorCircleAvatar(
-                        color: Colors.white,
+                        color: colors[index],
                         isActive: index == currentIndex,
                       ),
                     ),
                   )
-                : index == 9
+                : index == colors.length - 1
                     ? Padding(
                         padding: const EdgeInsets.only(right: 16, left: 8),
                         child: GestureDetector(
@@ -46,7 +64,7 @@ class _CustomListViewOfCirlceAvatarOfColorsState
                             });
                           },
                           child: CustomColorCircleAvatar(
-                            color: Colors.white,
+                            color: colors[index],
                             isActive: index == currentIndex,
                           ),
                         ),
@@ -60,7 +78,7 @@ class _CustomListViewOfCirlceAvatarOfColorsState
                             });
                           },
                           child: CustomColorCircleAvatar(
-                            color: Colors.white,
+                            color: colors[index],
                             isActive: index == currentIndex,
                           ),
                         ),
