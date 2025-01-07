@@ -36,7 +36,7 @@ class EditNoteViewBody extends StatelessWidget {
               ),
               title: 'Title',
               fontSize: 32,
-              MaxLines: 1,
+              MaxLines: null,
             ),
           ),
         ),

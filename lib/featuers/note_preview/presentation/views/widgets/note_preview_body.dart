@@ -36,10 +36,22 @@ class NotePreviewBody extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: Text(
-              'May 21,2025',
-              style: TextStyles.font18Medium(context)
-                  .copyWith(color: AppColors.secondaryColorOfText),
+            child: Row(
+              children: [
+                Text(
+                  'May 21,2025',
+                  style: TextStyles.font18Medium(context)
+                      .copyWith(color: AppColors.secondaryColorOfText),
+                ),
+                const Spacer(),
+                IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.copy,
+                      color: AppColors.mainColorOfText,
+                    ))
+              ],
             ),
           ),
           SliverToBoxAdapter(
