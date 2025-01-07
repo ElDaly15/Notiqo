@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:notiqo/featuers/main/presentation/views/widgets/custom_main_app_bar.dart';
 import 'package:notiqo/featuers/main/presentation/views/widgets/custom_sliver_of_notes.dart';
+import 'package:get/get.dart' as g;
+import 'package:notiqo/featuers/options/presentation/views/options_view.dart';
 
 class MainViewBody extends StatelessWidget {
   const MainViewBody({super.key});
@@ -12,9 +14,12 @@ class MainViewBody extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(child: SafeArea(child: SizedBox())),
-          SliverToBoxAdapter(
-              child: CustomMainAppBar(
-            onPressed: () {},
+          SliverToBoxAdapter(child: CustomMainAppBar(
+            onPressed: () {
+              g.Get.to(() => const OptionsView(),
+                  transition: g.Transition.fade,
+                  duration: const Duration(milliseconds: 400));
+            },
           )),
           SliverToBoxAdapter(
               child: SizedBox(
