@@ -1,8 +1,10 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notiqo/core/models/note_model.dart';
+import 'package:notiqo/featuers/main/presentation/manager/get_notes_cubit/get_notes_cubit.dart';
 import 'package:notiqo/featuers/splash/presentation/views/splash_view.dart';
 
 void main() async {
@@ -17,9 +19,12 @@ class NotiqoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashView(),
+    return BlocProvider(
+      create: (context) => GetNotesCubit()..FetchNotes(),
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashView(),
+      ),
     );
   }
 }
