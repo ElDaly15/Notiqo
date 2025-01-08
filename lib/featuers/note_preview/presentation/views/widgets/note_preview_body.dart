@@ -18,7 +18,9 @@ class NotePreviewBody extends StatelessWidget {
             child: SafeArea(child: SizedBox()),
           ),
           SliverToBoxAdapter(
-            child: CustomNotePreviewAppBar(),
+            child: CustomNotePreviewAppBar(
+              noteModel: noteModel,
+            ),
           ),
           SliverToBoxAdapter(
             child: const SizedBox(

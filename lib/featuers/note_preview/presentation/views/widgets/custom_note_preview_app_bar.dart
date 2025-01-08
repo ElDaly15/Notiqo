@@ -1,12 +1,19 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:notiqo/core/models/note_model.dart';
 import 'package:notiqo/core/utils/app_styles.dart';
+import 'package:notiqo/core/utils/const.dart';
 import 'package:notiqo/core/widgets/custom_app_bar_container.dart';
 import 'package:get/get.dart' as g;
+import 'package:notiqo/core/widgets/custom_snack_bar.dart';
 import 'package:notiqo/featuers/edit_note/presentation/views/edit_note_view.dart';
+import 'package:notiqo/featuers/main/presentation/manager/get_notes_cubit/get_notes_cubit.dart';
 
 class CustomNotePreviewAppBar extends StatelessWidget {
-  const CustomNotePreviewAppBar({super.key});
-
+  const CustomNotePreviewAppBar({super.key, required this.noteModel});
+  final NoteModel noteModel;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -43,7 +50,17 @@ class CustomNotePreviewAppBar extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          var notes =
+                              await Hive.box<NoteModel>(Const.boxOfNotesName);
+                          await notes.delete(noteModel.id);
+                          await BlocProvider.of<GetNotesCubit>(context)
+                              .FetchNotes();
+                          CustomSnackBar().showCustomSnackBar(
+                              context: context,
+                              message: 'Note Deleted',
+                              type: AnimatedSnackBarType.success);
+                          Navigator.pop(context);
                           Navigator.pop(context);
                         },
                         child: Text(
@@ -63,7 +80,10 @@ class CustomNotePreviewAppBar extends StatelessWidget {
         ),
         CustomAppBarContainer(
           onTap: () {
-            g.Get.to(() => const EditNoteView(),
+            g.Get.to(
+                () => EditNoteView(
+                      noteModel: noteModel,
+                    ),
                 transition: g.Transition.fade,
                 duration: const Duration(milliseconds: 400));
           },

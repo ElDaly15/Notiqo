@@ -6,6 +6,7 @@ import 'package:notiqo/core/widgets/custom_text_field.dart';
 import 'package:notiqo/featuers/add_note/presentation/manager/add_note_cubit/add_note_cubit.dart';
 import 'package:notiqo/featuers/add_note/presentation/views/widgets/custom_add_note_app_bar.dart';
 import 'package:notiqo/featuers/add_note/presentation/views/widgets/custom_list_view_of_circle_avatars.dart';
+import 'package:uuid/uuid.dart';
 
 class AddNoteViewBody extends StatefulWidget {
   const AddNoteViewBody({super.key});
@@ -101,9 +102,12 @@ class _AddNoteViewBodyState extends State<AddNoteViewBody> {
 
   Future<void> addNoteMethod(BuildContext context) async {
     DateTime now = DateTime.now(); // Current date and time
-    String formattedDate =
-        DateFormat('MMMM d, y').format(now); // Format the date
+    String formattedDate = DateFormat('MMMM d, y').format(now);
+    var uuid = Uuid();
+    print(uuid.v4());
+    // Format the date
     NoteModel noteModel = NoteModel(
+        id: uuid.v4(),
         dataTime: DateTime.now(),
         title: title!,
         content: content!,

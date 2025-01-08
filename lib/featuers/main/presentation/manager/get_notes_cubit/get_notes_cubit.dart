@@ -8,15 +8,15 @@ part 'get_notes_state.dart';
 
 class GetNotesCubit extends Cubit<GetNotesState> {
   GetNotesCubit() : super(GetNotesInitial());
-  void FetchNotes() {
+  Future<void> FetchNotes() async {
     emit(GetNotesLoading());
     try {
-      var notes = Hive.box<NoteModel>(Const.boxOfNotesName);
+      var notes = await Hive.box<NoteModel>(Const.boxOfNotesName);
       List<NoteModel> noteList = [];
       for (int i = 0; i < notes.length; i++) {
         noteList.add(notes.getAt(i)!);
       }
-      noteList.sort((a, b) => a.date.compareTo(b.dataTime.toString()));
+      noteList.sort((a, b) => b.dataTime.compareTo(a.dataTime));
       emit(GetNotesSuccess(noteList));
     } catch (e) {
       print(e);
