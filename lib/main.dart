@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -13,7 +14,12 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(Const.boxOfNotesName);
-  runApp(DevicePreview(enabled: true, builder: (context) => const NotiqoApp()));
+  if (kReleaseMode) {
+    runApp(const NotiqoApp());
+  } else {
+    runApp(
+        DevicePreview(enabled: true, builder: (context) => const NotiqoApp()));
+  }
 }
 
 class NotiqoApp extends StatelessWidget {

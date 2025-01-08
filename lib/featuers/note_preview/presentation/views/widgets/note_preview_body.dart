@@ -1,7 +1,10 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:notiqo/core/models/note_model.dart';
 import 'package:notiqo/core/utils/app_colors.dart';
 import 'package:notiqo/core/utils/app_styles.dart';
+import 'package:notiqo/core/widgets/custom_snack_bar.dart';
 import 'custom_note_preview_app_bar.dart';
 
 class NotePreviewBody extends StatelessWidget {
@@ -50,7 +53,14 @@ class NotePreviewBody extends StatelessWidget {
                 const Spacer(),
                 IconButton(
                     padding: EdgeInsets.zero,
-                    onPressed: () {},
+                    onPressed: () async {
+                      await Clipboard.setData(
+                          ClipboardData(text: noteModel.content));
+                      CustomSnackBar().showCustomSnackBar(
+                          context: context,
+                          message: 'Copied to clipboard',
+                          type: AnimatedSnackBarType.success);
+                    },
                     icon: Icon(
                       Icons.copy,
                       color: AppColors.mainColorOfText,
