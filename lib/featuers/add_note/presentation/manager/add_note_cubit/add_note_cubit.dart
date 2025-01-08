@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 import 'package:notiqo/core/models/note_model.dart';
+import 'package:notiqo/core/utils/const.dart';
 
 part 'add_note_state.dart';
 
@@ -13,8 +14,8 @@ class AddNoteCubit extends Cubit<AddNoteState> {
     try {
       emit(AddNoteLoading());
 
-      var notes = await Hive.box<NoteModel>('notes');
-      await notes.put('2', noteModel);
+      var notes = await Hive.box<NoteModel>(Const.boxOfNotesName);
+      await notes.add(noteModel);
 
       emit(AddNoteSuccess());
     } catch (e) {

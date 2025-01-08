@@ -26,8 +26,12 @@ class CustomSliverGridOfNotes extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         childCount: notes.length,
         (context, index) => CustomNoteWidget(
+          noteModel: notes[index],
           onTap: () {
-            g.Get.to(() => const NotePreview(),
+            g.Get.to(
+                () => NotePreview(
+                      noteModel: notes[index],
+                    ),
                 transition: g.Transition.fade,
                 duration: const Duration(milliseconds: 400));
           },

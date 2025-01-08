@@ -25,7 +25,14 @@ class CustomTextField extends StatelessWidget {
               .withOpacity(0.42), // Selection highlight color
           selectionHandleColor: Colors.white // Handle color
           ),
-      child: TextField(
+      child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'This Field is Required';
+          }
+          return null;
+        },
         onChanged: onChanged,
         controller: textEditingController,
         decoration: InputDecoration(
@@ -33,6 +40,9 @@ class CustomTextField extends StatelessWidget {
           hintStyle: TextStyles.font24Medium(context).copyWith(
               color: AppColors.secondaryColorOfText, fontSize: fontSize),
           border: InputBorder.none,
+          errorStyle: TextStyles.font14Regular(context).copyWith(
+            color: Colors.red,
+          ),
           focusedBorder: InputBorder.none,
           enabledBorder: InputBorder.none,
           errorBorder: InputBorder.none,

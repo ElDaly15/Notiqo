@@ -10,11 +10,14 @@ class NoteModel {
   @HiveField(2)
   final String date;
   @HiveField(3)
-  final String color;
+  final int color;
+  @HiveField(4)
+  final DateTime dataTime;
 
   NoteModel(
       {required this.title,
       required this.content,
       required this.date,
-      required this.color});
+      required this.color,
+      required this.dataTime});
 }

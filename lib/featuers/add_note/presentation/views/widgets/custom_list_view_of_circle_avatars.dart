@@ -4,7 +4,7 @@ import 'package:notiqo/featuers/add_note/presentation/views/widgets/custom_circl
 class CustomListViewOfCirlceAvatarOfColors extends StatefulWidget {
   const CustomListViewOfCirlceAvatarOfColors(
       {super.key, required this.colorCallBack});
-  final void Function(Color color) colorCallBack;
+  final void Function(int color) colorCallBack;
 
   @override
   State<CustomListViewOfCirlceAvatarOfColors> createState() =>
@@ -33,6 +33,25 @@ class _CustomListViewOfCirlceAvatarOfColorsState
     Color(0xffB6FFA1),
     Color(0xff00FF9C),
   ];
+  final List<int> colorsCodes = [
+    0xffCACF85,
+    0xff8CBA80,
+    0xff658E9C,
+    0xff4D5382,
+    0xff514663,
+    0xffE1B07E,
+    0xffE5BE9E,
+    0xff361D2E,
+    0xff660000,
+    0xffFF9000,
+    0xff2E86AB,
+    0xffF24236,
+    0xff564138,
+    0xff82816D,
+    0xff1B2D2A,
+    0xffB6FFA1,
+    0xff00FF9C
+  ];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -48,7 +67,7 @@ class _CustomListViewOfCirlceAvatarOfColorsState
                       onTap: () {
                         setState(() {
                           currentIndex = index;
-                          widget.colorCallBack(colors[index]);
+                          widget.colorCallBack(colorsCodes[index]);
                         });
                       },
                       child: CustomColorCircleAvatar(
@@ -64,7 +83,7 @@ class _CustomListViewOfCirlceAvatarOfColorsState
                           onTap: () {
                             setState(() {
                               currentIndex = index;
-                              widget.colorCallBack(colors[index]);
+                              widget.colorCallBack(colorsCodes[index]);
                             });
                           },
                           child: CustomColorCircleAvatar(
@@ -79,7 +98,7 @@ class _CustomListViewOfCirlceAvatarOfColorsState
                           onTap: () {
                             setState(() {
                               currentIndex = index;
-                              widget.colorCallBack(colors[index]);
+                              widget.colorCallBack(colorsCodes[index]);
                             });
                           },
                           child: CustomColorCircleAvatar(
