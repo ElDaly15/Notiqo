@@ -1,6 +1,13 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:notiqo/core/models/note_model.dart';
 import 'package:notiqo/core/utils/app_colors.dart';
 import 'package:notiqo/core/utils/app_styles.dart';
+import 'package:notiqo/core/utils/const.dart';
+import 'package:notiqo/core/widgets/custom_snack_bar.dart';
+import 'package:notiqo/featuers/main/presentation/manager/get_notes_cubit/get_notes_cubit.dart';
 
 import 'package:notiqo/featuers/options/presentation/views/widgets/options_app_bar.dart';
 
@@ -52,8 +59,17 @@ class OptionsViewBody extends StatelessWidget {
                             ),
                           ),
                           TextButton(
-                              onPressed: () {
+                              onPressed: () async {
+                                var box = await Hive.openBox<NoteModel>(
+                                    Const.boxOfNotesName);
+                                await box.clear();
+                                await BlocProvider.of<GetNotesCubit>(context)
+                                  ..FetchNotes();
                                 Navigator.pop(context);
+                                CustomSnackBar().showCustomSnackBar(
+                                    context: context,
+                                    message: 'All Notes Deleted',
+                                    type: AnimatedSnackBarType.success);
                               },
                               child: Text(
                                 'Delete',
