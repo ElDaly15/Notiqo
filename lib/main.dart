@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notiqo/core/models/note_model.dart';
+import 'package:notiqo/featuers/add_note/presentation/manager/add_note_cubit/add_note_cubit.dart';
 import 'package:notiqo/featuers/main/presentation/manager/get_notes_cubit/get_notes_cubit.dart';
 import 'package:notiqo/featuers/splash/presentation/views/splash_view.dart';
 
@@ -19,8 +20,15 @@ class NotiqoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetNotesCubit()..FetchNotes(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetNotesCubit()..FetchNotes(),
+        ),
+        BlocProvider(
+          create: (context) => AddNoteCubit(),
+        ),
+      ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home: SplashView(),

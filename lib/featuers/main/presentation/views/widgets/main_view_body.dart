@@ -32,7 +32,9 @@ class MainViewBody extends StatelessWidget {
                     child: SizedBox(
                   height: 20,
                 )),
-                CustomSliverGridOfNotes(),
+                CustomSliverGridOfNotes(
+                  notes: state.notes,
+                ),
                 SliverToBoxAdapter(
                     child: SizedBox(
                   height: 20,

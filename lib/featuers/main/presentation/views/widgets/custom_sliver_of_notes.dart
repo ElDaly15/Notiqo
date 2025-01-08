@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:notiqo/core/models/note_model.dart';
 import 'package:notiqo/featuers/main/presentation/views/widgets/custom_note_widget.dart';
 import 'package:get/get.dart' as g;
 import 'package:notiqo/featuers/note_preview/presentation/views/note_preview.dart';
 
 class CustomSliverGridOfNotes extends StatelessWidget {
-  const CustomSliverGridOfNotes({super.key});
+  const CustomSliverGridOfNotes({super.key, required this.notes});
+  final List<NoteModel> notes;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class CustomSliverGridOfNotes extends StatelessWidget {
         ],
       ),
       delegate: SliverChildBuilderDelegate(
-        childCount: 10,
+        childCount: notes.length,
         (context, index) => CustomNoteWidget(
           onTap: () {
             g.Get.to(() => const NotePreview(),

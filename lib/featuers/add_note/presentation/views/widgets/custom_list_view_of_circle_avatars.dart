@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:notiqo/featuers/add_note/presentation/views/widgets/custom_circle_of_circle_avatar.dart';
 
 class CustomListViewOfCirlceAvatarOfColors extends StatefulWidget {
-  const CustomListViewOfCirlceAvatarOfColors({super.key});
+  const CustomListViewOfCirlceAvatarOfColors(
+      {super.key, required this.colorCallBack});
+  final void Function(Color color) colorCallBack;
 
   @override
   State<CustomListViewOfCirlceAvatarOfColors> createState() =>
@@ -46,6 +48,7 @@ class _CustomListViewOfCirlceAvatarOfColorsState
                       onTap: () {
                         setState(() {
                           currentIndex = index;
+                          widget.colorCallBack(colors[index]);
                         });
                       },
                       child: CustomColorCircleAvatar(
@@ -61,6 +64,7 @@ class _CustomListViewOfCirlceAvatarOfColorsState
                           onTap: () {
                             setState(() {
                               currentIndex = index;
+                              widget.colorCallBack(colors[index]);
                             });
                           },
                           child: CustomColorCircleAvatar(
@@ -75,6 +79,7 @@ class _CustomListViewOfCirlceAvatarOfColorsState
                           onTap: () {
                             setState(() {
                               currentIndex = index;
+                              widget.colorCallBack(colors[index]);
                             });
                           },
                           child: CustomColorCircleAvatar(
